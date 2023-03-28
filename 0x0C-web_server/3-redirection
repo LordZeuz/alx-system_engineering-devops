@@ -16,8 +16,8 @@ SERVER_CONFIG=\
 	location / {
 		try_files \$uri \$uri/ =404;
 	}
-	if (\$request_filename ~ redirect_me){
-		rewrite ^ https://sketchfab.com/bluepeno/models permanent;
+	if (\$request_uri ~ redirect_me){
+		return 301 https://www.youtube.com/results?search_query=learn+nginx+configuration;
 	}
 }"
 
