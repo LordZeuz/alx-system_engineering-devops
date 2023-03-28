@@ -2,11 +2,13 @@
 # sets up a new 404 error page
 sudo apt-get update
 sudo apt-get install -y nginx
+mkdir -p /var/www/html/
+sudo chmod -R 755 /var/www
 echo "Hello World!" > index.html
 sudo mv index.html /var/www/html
 
 echo "Ceci n'est pas une page" > 404.html
-sudo mv 404.html /usr/share/nginx/html/custom_404.html
+sudo mv 404.html /usr/share/nginx/html/404.html
 
 error="\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}"
 command="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/results?search_query=learn+nginx+configuration permanent;"
