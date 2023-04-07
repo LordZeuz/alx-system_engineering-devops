@@ -14,8 +14,8 @@ echo "
 
    backend servers
    balance roundrobin
-   server 98914-web-01 107.21.16.201:80 check
-   server 98914-web-02 100.25.169.239:80 check
+   server 98914-web-01 35.153.19.82:80 check
+   server 98914-web-02 52.91.202.212:80 check
 " >> /etc/haproxy/haproxy.cfg
 
 sudo /etc/init.d/haproxy restart
