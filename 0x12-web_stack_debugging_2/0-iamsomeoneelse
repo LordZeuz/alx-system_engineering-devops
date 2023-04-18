@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+#Runs the whoami command using the first arg passed
+sudo -u "$1" whoami
