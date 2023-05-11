@@ -3,8 +3,8 @@
 import requests
 
 
-def top_ten(subreddit):
-    """top 10 titles on hottest post on subredit"""
+def recurse(subreddit, hot_list=[], after="", count=0):
+    """Returns a list of titles of all hot posts on a given subreddit."""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
         "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0)"
