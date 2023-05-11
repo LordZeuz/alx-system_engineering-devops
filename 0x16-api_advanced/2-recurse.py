@@ -27,4 +27,4 @@ def top_ten(subreddit):
 
     if after is not None:
         return recurse(subreddit, hot_list, after, count)
-    return hot_list 
+    return hot_list
