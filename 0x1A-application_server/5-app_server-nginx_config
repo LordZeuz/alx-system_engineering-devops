@@ -1,0 +1,42 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    add_header X-Served-By 98914-web-01;
+
+    # Use IP of server as domain name
+    server_name 35.153.19.82;
+
+    # Serve /airbnb-onepage/ route from AirBnB_clone_v2
+    location = /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+
+    # Serve /number_odd_or_even/ route on AirBnB_clone_v2
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
+
+    # Serve API on AirBnB_clone_v3
+    location /api/v1/ {
+        proxy_pass http://127.0.0.1:5002;
+    }
+
+    # Serve API on AirBnB_clone_v4
+    location /  {
+       proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+
+    # Serve static content for AirBnB_clone_v4
+    location /static {
+       proxy_pass http://127.0.0.1:5003;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html{
+      root   /var/www/html;
+      internal;
+    }
+    location /redirect_me {
+      return 301 https://www.youtube.com/watch?v=32Tz0OnTti4;
+    }
